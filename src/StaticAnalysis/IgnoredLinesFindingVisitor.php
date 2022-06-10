@@ -65,6 +65,10 @@ final class IgnoredLinesFindingVisitor extends NodeVisitorAbstract
         }
 
         if ($node instanceof Interface_) {
+            $this->ignoredLines = array_merge(
+                $this->ignoredLines,
+                range($node->getStartLine(), $node->getEndLine())
+            );
             return;
         }
 
